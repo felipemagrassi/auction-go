@@ -11,7 +11,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func (u *auctionController) FindAuctionById(c *gin.Context) {
+func (u *AuctionController) FindAuctionById(c *gin.Context) {
 	auctionId := c.Query("auctionId")
 	if err := uuid.Validate(auctionId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{
@@ -33,7 +33,7 @@ func (u *auctionController) FindAuctionById(c *gin.Context) {
 	c.JSON(http.StatusOK, auctionData)
 }
 
-func (u *auctionController) FindAuctions(c *gin.Context) {
+func (u *AuctionController) FindAuctions(c *gin.Context) {
 	status := c.Query("status")
 	category := c.Query("category")
 	productName := c.Query("productName")
@@ -59,7 +59,7 @@ func (u *auctionController) FindAuctions(c *gin.Context) {
 	c.JSON(http.StatusOK, auctionData)
 }
 
-func (u *auctionController) FindWinningAuctions(c *gin.Context) {
+func (u *AuctionController) FindWinningBidByAuctionId(c *gin.Context) {
 	auctionId := c.Query("auctionId")
 	if err := uuid.Validate(auctionId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{

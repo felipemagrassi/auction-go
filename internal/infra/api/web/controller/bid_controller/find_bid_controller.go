@@ -9,7 +9,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func (u *bidController) FindAuctionById(c *gin.Context) {
+func (u *BidController) FindBidByAuctionId(c *gin.Context) {
 	auctionId := c.Query("auctionId")
 	if err := uuid.Validate(auctionId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{

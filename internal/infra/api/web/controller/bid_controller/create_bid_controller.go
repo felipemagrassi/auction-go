@@ -10,17 +10,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type bidController struct {
+type BidController struct {
 	bidUseCase bid_usecase.BidUseCaseInterface
 }
 
-func NewBidController(bidUseCase bid_usecase.BidUseCaseInterface) *bidController {
-	return &bidController{
+func NewBidController(bidUseCase bid_usecase.BidUseCaseInterface) *BidController {
+	return &BidController{
 		bidUseCase: bidUseCase,
 	}
 }
 
-func (u *bidController) CreateBid(c *gin.Context) {
+func (u *BidController) CreateBid(c *gin.Context) {
 	var bidInputDTO bid_usecase.BidInputDTO
 
 	if err := c.ShouldBindJSON(&bidInputDTO); err != nil {

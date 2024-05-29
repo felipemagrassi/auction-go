@@ -10,17 +10,17 @@ import (
 	"github.com/google/uuid"
 )
 
-type userController struct {
+type UserController struct {
 	userUsecase user_usecase.UserUseCaseInterface
 }
 
-func NewUserController(userUsecase user_usecase.UserUseCaseInterface) *userController {
-	return &userController{
+func NewUserController(userUsecase user_usecase.UserUseCaseInterface) *UserController {
+	return &UserController{
 		userUsecase: userUsecase,
 	}
 }
 
-func (u *userController) FindUserbyId(c *gin.Context) {
+func (u *UserController) FindUserById(c *gin.Context) {
 	userId := c.Query("userId")
 	if err := uuid.Validate(userId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{

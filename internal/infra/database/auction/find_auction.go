@@ -20,7 +20,7 @@ func (ar *AuctionRepository) FindAuctionById(
 
 	var auctionEntityMongo AuctionEntityMongo
 	if err := ar.Collection.FindOne(ctx, filter).Decode(&auctionEntityMongo); err != nil {
-		message := fmt.Sprintf("Error trying to find auction by id = %d", auctionId)
+		message := fmt.Sprintf("Error trying to find auction by id = %s", auctionId)
 		logger.Error(message, err)
 		return nil, internal_error.NewInternalServerError(message)
 	}
