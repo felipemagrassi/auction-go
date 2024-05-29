@@ -30,7 +30,6 @@ type BidInputDTO struct {
 type BidUseCaseInterface interface {
 	CreateBid(context.Context, BidInputDTO) *internal_error.InternalError
 	FindBidByAuctionId(context.Context, string) ([]BidOutputDTO, *internal_error.InternalError)
-	FindWinningBidByAuctionId(context.Context, string) (*BidOutputDTO, *internal_error.InternalError)
 }
 
 type BidUseCase struct {

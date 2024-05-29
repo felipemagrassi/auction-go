@@ -39,8 +39,9 @@ type AuctionUseCase struct {
 
 type AuctionUseCaseInterface interface {
 	CreateAuction(context.Context, AuctionInputDTO) *internal_error.InternalError
-	FindAuctionById(context.Context, string) (*AuctionOutputDTO, error)
-	FindAuctions(context.Context, auction_entity.AuctionStatus, string, string) ([]AuctionOutputDTO, error)
+	FindAuctionById(context.Context, string) (*AuctionOutputDTO, *internal_error.InternalError)
+	FindAuctions(context.Context, auction_entity.AuctionStatus, string, string) ([]AuctionOutputDTO, *internal_error.InternalError)
+	FindWinningBidByAuctionId(ctx context.Context, auctionId string) (*WinningInfoOutputDTO, *internal_error.InternalError)
 }
 
 func (au *AuctionUseCase) CreateAuction(

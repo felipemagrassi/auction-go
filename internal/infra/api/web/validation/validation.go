@@ -42,7 +42,7 @@ func ValidateErr(validation_err error) *rest_err.RestErr {
 			})
 		}
 
-		return rest_err.NewBadRequestValidationError(
+		return rest_err.NewBadRequestError(
 			"Invalid input",
 			errorCauses...,
 		)
