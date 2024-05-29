@@ -2,6 +2,7 @@ package user_controller
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/felipemagrassi/auction-go/configuration/rest_err"
@@ -21,11 +22,11 @@ func NewUserController(userUsecase user_usecase.UserUseCaseInterface) *UserContr
 }
 
 func (u *UserController) FindUserById(c *gin.Context) {
-	userId := c.Query("userId")
+	userId := c.Param("userId")
 	if err := uuid.Validate(userId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{
 			Field:   "userId",
-			Message: "Invalid UUID value",
+			Message: fmt.Sprintf("Invalid UUID value: %s", userId),
 		})
 
 		c.JSON(errRest.Code, errRest)

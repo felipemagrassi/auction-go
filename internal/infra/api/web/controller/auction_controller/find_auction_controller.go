@@ -12,7 +12,7 @@ import (
 )
 
 func (u *AuctionController) FindAuctionById(c *gin.Context) {
-	auctionId := c.Query("auctionId")
+	auctionId := c.Param("auctionId")
 	if err := uuid.Validate(auctionId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{
 			Field:   "auctionId",
@@ -60,7 +60,7 @@ func (u *AuctionController) FindAuctions(c *gin.Context) {
 }
 
 func (u *AuctionController) FindWinningBidByAuctionId(c *gin.Context) {
-	auctionId := c.Query("auctionId")
+	auctionId := c.Param("auctionId")
 	if err := uuid.Validate(auctionId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{
 			Field:   "auctionId",

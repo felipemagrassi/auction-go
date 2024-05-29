@@ -1,0 +1,32 @@
+### 
+
+GET localhost:8080/auction HTTP/1.1
+Host: localhost:8080
+Content-Length: 412
+
+### 
+
+GET localhost:8080/auction/:auction_id HTTP/1.1
+Content-Length: 4
+Host: localhost:8080
+
+### 
+
+GET localhost:8080/auction/winner/:auction_id HTTP/1.1
+Content-Length: 4
+Host: localhost:8080
+
+### 
+
+POST localhost:8080/auction HTTP/1.1
+Content-Length: 4
+Host: localhost:8080
+
+{
+	"product_name": "Car",
+	"category":"Cars",
+	"description":"Red Car with 4 tires", HTTP/1.1
+	"condition":"0"
+} HTTP/1.1
+
+### 
