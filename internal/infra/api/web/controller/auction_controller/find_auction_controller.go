@@ -3,7 +3,6 @@ package auction_controller
 import (
 	"context"
 	"net/http"
-	"strconv"
 
 	"github.com/felipemagrassi/auction-go/configuration/rest_err"
 	"github.com/felipemagrassi/auction-go/internal/entity/auction_entity"
@@ -34,20 +33,9 @@ func (u *AuctionController) FindAuctionById(c *gin.Context) {
 }
 
 func (u *AuctionController) FindAuctions(c *gin.Context) {
-	status := c.Query("status")
 	category := c.Query("category")
 	productName := c.Query("productName")
-
-	statusNumber, errConv := strconv.Atoi(status)
-	if errConv != nil {
-		errRest := rest_err.NewBadRequestError("Invalid Fields", rest_err.Causes{
-			Field:   "status",
-			Message: "Invalid status value",
-		})
-
-		c.JSON(errRest.Code, errRest)
-		return
-	}
+	statusNumber := -1
 
 	auctionData, err := u.auctionUseCase.FindAuctions(context.Background(), auction_entity.AuctionStatus(statusNumber), category, productName)
 	if err != nil {
