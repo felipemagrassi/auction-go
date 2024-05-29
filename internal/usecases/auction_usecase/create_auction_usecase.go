@@ -11,9 +11,9 @@ import (
 )
 
 type AuctionInputDTO struct {
-	ProductName string                          `json:"product_name"`
-	Category    string                          `json:"category"`
-	Description string                          `json:"description"`
+	ProductName string                          `json:"product_name" binding:"required,min=1"`
+	Category    string                          `json:"category" binding:"required,min=2"`
+	Description string                          `json:"description" binding:"required,min=10"`
 	Condition   auction_entity.ProductCondition `json:"condition"`
 }
 
@@ -29,7 +29,7 @@ type AuctionOutputDTO struct {
 
 type WinningInfoOutputDTO struct {
 	Auction AuctionOutputDTO          `json:"auction"`
-	Bid     *bid_usecase.BidOutputDTO `json:"bid",omitempty`
+	Bid     *bid_usecase.BidOutputDTO `json:"bid,omitempty"`
 }
 
 type AuctionUseCase struct {

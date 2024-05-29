@@ -18,6 +18,15 @@ func (r *RestErr) Error() string {
 	return r.Message
 }
 
+func NewBadRequestValidationError(message string, causes ...Causes) *RestErr {
+	return &RestErr{
+		Message: message,
+		Err:     "bad_request",
+		Code:    http.StatusBadRequest,
+		Causes:  causes,
+	}
+}
+
 func NewBadRequestError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
