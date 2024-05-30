@@ -63,9 +63,7 @@ func CreateAuction(
 
 func (au *Auction) Validate() *internal_error.InternalError {
 	if len(au.ProductName) <= 1 ||
-		len(au.Category) <= 1 ||
-		len(au.Description) <= 10 ||
-		(au.Condition != New || au.Condition != Used || au.Condition != Refurbished) {
+		len(au.Category) <= 1 {
 		return internal_error.NewBadRequestError("Invalid auction data")
 	}
 

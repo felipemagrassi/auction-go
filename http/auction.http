@@ -18,15 +18,12 @@ Host: localhost:8080
 
 ### 
 
-POST localhost:8080/auction HTTP/1.1
-Content-Length: 4
-Host: localhost:8080
+POST http://localhost:8080/auction
+Content-Type: application/json
 
 {
 	"product_name": "Car",
 	"category":"Cars",
-	"description":"Red Car with 4 tires", HTTP/1.1
-	"condition":"0"
-} HTTP/1.1
-
-### 
+	"description":"Red Car with 4 tires",
+	"condition":0
+}
